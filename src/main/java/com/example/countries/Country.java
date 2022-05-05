@@ -1,8 +1,7 @@
 package com.example.countries;
-
 import java.util.List;
 
-public class Country {
+public class Country implements Comparable<Country>{
     private final String id;
     private final String name;
     private final String nativeName;
@@ -11,11 +10,12 @@ public class Country {
     private final String capital;
     private final String currency;
     private final List<String> languages;
+    private final List<Byte> flag;
 
 
     public Country(String id, String name,String nativeName, 
                 int phoneCode, String continent, String capital, 
-                String currency, List<String> languages) {
+                String currency, List<String> languages,List<Byte> flag) {
         this.id = id;
         this.name = name;
         this.nativeName = nativeName;
@@ -24,6 +24,7 @@ public class Country {
         this.capital = capital;
         this.currency = currency;
         this.languages = languages;
+        this.flag = flag;
     }
     
 
@@ -64,6 +65,21 @@ public class Country {
 
     public List<String> getLanguages() {
         return this.languages;
+    }
+
+    public List<Byte> getFlag() {
+        return this.flag;
+    }
+
+
+
+    @Override
+    public int compareTo(Country o) {
+        int phoneCode
+            = ((Country)o).getPhoneCode();
+  
+        //Ascending order
+        return this.phoneCode - phoneCode;
     }
 
 
